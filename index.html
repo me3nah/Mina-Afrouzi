@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mina Afrouzi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --panel: #f4f5f2;
+    --ink: #14171a;
+    --ink-soft: #5c6167;
+    --rule: #e4e3dd;
+    --accent: #7c6bb5;
+    --accent-soft: #efebf7;
+    --accent-strong: #5c4b91;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14161a;
+      --panel: #1b1e22;
+      --ink: #edeee9;
+      --ink-soft: #9ba0a3;
+      --rule: #2b2f33;
+      --accent: #b3a3e0;
+      --accent-soft: #26213a;
+      --accent-strong: #cabdf0;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14161a;
+    --panel: #1b1e22;
+    --ink: #edeee9;
+    --ink-soft: #9ba0a3;
+    --rule: #2b2f33;
+    --accent: #b3a3e0;
+    --accent-soft: #26213a;
+    --accent-strong: #cabdf0;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    max-width: 1180px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    padding: 3.2rem 2.4rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--rule);
+  }
+
+  .monogram {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  h1.name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .role {
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    margin: 0 0 2.2rem;
+    max-width: 22ch;
+  }
+
+  nav.toc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: auto;
+  }
+
+  nav.toc a {
+    position: relative;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-left: 2px solid transparent;
+  }
+  nav.toc a:hover {
+    border-left-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .sidebar-foot {
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+  }
+  .sidebar-foot a {
+    display: block;
+    color: var(--ink-soft);
+    text-decoration: none;
+    margin-top: 0.35rem;
+  }
+  .sidebar-foot a:hover { color: var(--accent); }
+
+  main {
+    padding: 3.6rem 3.2rem 6rem;
+    max-width: 760px;
+  }
+
+  .bio {
+    margin-bottom: 4rem;
+  }
+
+  .bio p {
+    margin: 0 0 1.1rem;
+    font-size: 1.05rem;
+    max-width: 62ch;
+  }
+  .bio p:last-child { margin-bottom: 0; }
+
+  section {
+    margin-bottom: 4rem;
+    scroll-margin-top: 2rem;
+  }
+
+  section > h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 1.8rem;
+  }
+
+  h3.subhead {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--ink-soft);
+    margin: 2rem 0 0.9rem;
+  }
+  h3.subhead:first-of-type { margin-top: 0; }
+
+  .jmp {
+    background: var(--accent-soft);
+    border-radius: 6px;
+    padding: 1.5rem 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .jmp .label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 0.5rem;
+  }
+
+  .jmp .title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+    color: var(--ink);
+  }
+
+  .jmp .abstract {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    margin: 0 0 1rem;
+  }
+
+  .links a {
+    color: var(--accent-strong);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 1.3rem;
+  }
+  .links a:hover { text-decoration: underline; }
+
+  ul.plain {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.plain li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  ul.plain li:last-child { border-bottom: none; }
+
+  .paper-title {
+    display: block;
+    font-weight: 500;
+  }
+
+  .paper-meta {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 0.87rem;
+    margin-top: 0.3rem;
+  }
+  .paper-meta a { color: var(--accent-strong); text-decoration: none; }
+  .paper-meta a:hover { text-decoration: underline; }
+
+  .course-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.97rem;
+  }
+  .course-row:last-child { border-bottom: none; }
+
+  .term-tag {
+    background: var(--panel);
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .cv-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: var(--bg);
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .cv-button:hover { background: var(--accent-strong); }
+
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.98rem;
+  }
+  .contact-list li { padding: 0.4rem 0; }
+  .contact-list a { color: var(--accent-strong); text-decoration: none; }
+  .contact-list a:hover { text-decoration: underline; }
+
+  .placeholder {
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  footer.page-foot {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.6rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar {
+      position: relative;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 2.6rem 1.6rem 1.8rem;
+    }
+    nav.toc {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 1.2rem;
+      margin-bottom: 1.6rem;
+    }
+    nav.toc a { padding: 0.3rem 0; border-left: none; border-bottom: 2px solid transparent; }
+    nav.toc a:hover { border-left: none; border-bottom-color: var(--accent); }
+    .sidebar-foot { border-top: none; padding-top: 0; }
+    main { padding: 2.6rem 1.6rem 4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="monogram">MA</div>
+    <h1 class="name">Mina Afrouzi</h1>
+    <p class="role">PhD Candidate in Economics, The Graduate Center, CUNY</p>
+    <nav class="toc">
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="sidebar-foot">
+      New York, NY
+      <a href="mailto:mafrouzikhosroshahi@gc.cuny.edu">mafrouzikhosroshahi@gc.cuny.edu</a>
+      <a href="https://www.linkedin.com/in/mina-afrouzi-11813321a/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=rPAYJgEAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+    </div>
+  </aside>
+
+  <main>
+    <section class="bio">
+      <p>I am a PhD candidate in Economics at the Graduate Center, CUNY, working under the supervision of Professor Theodore Joyce. My research is in applied microeconomics, with a focus on higher education policy and student outcomes.</p>
+      <p>I am currently writing a paper on CUNY's SEEK program, a need-based bundled-aid intervention that admits students below their campus's own academic bar, asking whether its effect on student outcomes held up after COVID changed both the population it serves and the admissions rule that selects them. More broadly, I work with large-scale administrative data to evaluate education policy, using tools from applied microeconometrics — selection models, decomposition methods, and sensitivity analysis for unobserved confounding.</p>
+    </section>
+
+    <section id="research">
+      <h2>Research</h2>
+
+      <h3 class="subhead">Publications</h3>
+      <ul class="plain">
+        <li>
+          <span class="paper-title">Standardized Test Scores and Academic Performance at a Public University System</span>
+          <span class="paper-meta">with T. J. Joyce, Truelsch, Gentsch, and Du &middot; <em>Journal of Public Economics</em>, Vol. 262, Article 105774 (2026) &middot; <a href="https://doi.org/10.1016/j.jpubeco.2026.105774" target="_blank" rel="noopener">doi:10.1016/j.jpubeco.2026.105774</a></span>
+        </li>
+      </ul>
+
+      <h3 class="subhead">Work in Progress</h3>
+      <ul class="plain">
+        <li>
+          <span class="paper-title">Selection Under a Changing Signal: COVID, Test-Optional Admissions, and the SEEK Program's Effect on Disadvantaged Students</span>
+          <span class="paper-meta">Sole-authored</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+
+      <h3 class="subhead">Baruch College, CUNY</h3>
+      <div class="course-row">
+        <span>Introduction to Microeconomics</span>
+        <span class="term-tag">Fall 2026</span>
+      </div>
+
+      <h3 class="subhead">Hunter College, CUNY</h3>
+      <div class="course-row">
+        <span>International Finance</span>
+        <span class="term-tag">Fall 2024, Fall 2025, Spring 2026</span>
+      </div>
+      <div class="course-row">
+        <span>Intermediate Microeconomics</span>
+        <span class="term-tag">Summer 2025, Spring 2026, Summer 2026</span>
+      </div>
+      <div class="course-row">
+        <span>Principles of Microeconomics</span>
+        <span class="term-tag">Spring 2025, Summer 2026</span>
+      </div>
+
+      <h3 class="subhead">City College, CUNY</h3>
+      <div class="course-row">
+        <span>Money and Banking</span>
+        <span class="term-tag">Fall 2025</span>
+      </div>
+
+      <h3 class="subhead">The Graduate Center, CUNY — Teaching Assistant</h3>
+      <div class="course-row">
+        <span>Ph.D. Macroeconomics I &amp; II</span>
+        <span class="term-tag">2023–2025</span>
+      </div>
+    </section>
+
+    <section id="cv">
+      <h2>CV</h2>
+      <p><a class="cv-button" href="Mina_Afrouzi_Khosroshahi_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a></p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:mafrouzikhosroshahi@gc.cuny.edu">mafrouzikhosroshahi@gc.cuny.edu</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/mina-afrouzi-11813321a/" target="_blank" rel="noopener">linkedin.com/in/mina-afrouzi</a></li>
+        <li>Google Scholar: <a href="https://scholar.google.com/citations?user=rPAYJgEAAAAJ&hl=en" target="_blank" rel="noopener">scholar.google.com/citations</a></li>
+      </ul>
+    </section>
+
+    <footer class="page-foot">
+      Mina Afrouzi &middot; The Graduate Center, CUNY &middot; last updated October 2026
+    </footer>
+  </main>
+
+</div>
+</body>
+</html>
